@@ -15,4 +15,16 @@ def get_time():
 
 # Complete. 
 
+# Define the contact_requests table
+# Includes fields for name, email, phone, message, and creation timestamp
+db.define_table(
+    "contact_requests",
+    Field("name", requires=IS_NOT_EMPTY()),
+    Field("email", requires=IS_EMAIL()),
+    Field("phone", requires=IS_NOT_EMPTY()),
+    Field("message", "text"),
+    Field("created_on", "datetime", default=get_time)
+)
+
+# Commit the changes to the database
 db.commit()
